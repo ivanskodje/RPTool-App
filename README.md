@@ -1,8 +1,11 @@
-# RPTool App 0.1.0
+# RPTool App
 RPTool App is a multi-tool to assist in online Pen & Paper roleplaying games.
 
 ## Features
 * Custom Item Lists
+
+## Download
+* Download RPTool 0.2.0 [Mega.nz](https://mega.nz/#!ZVMgWajB!ugFH2p4rs0tYbYTBKWk0HOxX2fJWbcU-Ga6_ZxsxN0U)
 
 ## Item Lists
 #### Item List Formatting Example:
