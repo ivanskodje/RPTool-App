@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rptool.app.itemlist.ui.window.WindowController">
+   <left>
+      <BorderPane minWidth="265.0" prefHeight="510.0" prefWidth="265.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <buttons>
+                  <Button layoutX="109.0" layoutY="18.0" mnemonicParsing="false" onAction="#onRandomPressed" text="Random" />
+                  <Button layoutX="200.0" layoutY="18.0" mnemonicParsing="false" onAction="#onNewItemPressed" text="New ..." />
+               </buttons>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets left="10.0" />
+               </BorderPane.margin>
+            </ButtonBar>
+         </bottom>
+         <center>
+            <JFXListView fx:id="listView" onMousePressed="#onListViewMousePressed" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <TextField fx:id="searchTextField" promptText="Search ..." BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </left>
+   <center>
+      <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

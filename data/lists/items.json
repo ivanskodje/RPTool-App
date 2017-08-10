@@ -1,0 +1,54 @@
+{
+  "name": "Items",
+  "lists": [
+    {
+      "name": "Weapons",
+      "items": [
+        {
+          "name": "Knife",
+          "properties": [
+            {
+              "name": "Damage",
+              "description": "1d3 "
+            },
+            {
+              "name": "Description",
+              "description": "For stabbing needs "
+            }
+          ]
+        },
+        {
+          "name": "Mace",
+          "properties": [
+            {
+              "name": "Damage",
+              "description": "1d4"
+            },
+            {
+              "name": "Note",
+              "description": "No rats"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Armor",
+      "items": [
+        {
+          "name": "Leather Armor",
+          "properties": [
+            {
+              "name": "Defense",
+              "description": "+1"
+            },
+            {
+              "name": "Note",
+              "description": "It has that new car smell"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rptool.app.MainController">
+   <children>
+      <BorderPane layoutX="241.0" layoutY="-8.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <ButtonBar focusTraversable="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <buttons>
+                        <Button layoutX="820.0" layoutY="10.0" maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#onTestPressed" text="Test" />
+                        <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#onItemListPressed">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ui/icons/32x32.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </buttons>
+                  </ButtonBar>
+               </top>
+               <center>
+                  <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </center>
+         <top>
+            <MenuBar disable="true" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Item Lists">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Category">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="New Category" />
+                              <MenuItem mnemonicParsing="false" text="Edit Category" />
+                              <MenuItem mnemonicParsing="false" text="Delete Category" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="List">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="New List" />
+                              <MenuItem mnemonicParsing="false" text="Edit List" />
+                              <MenuItem mnemonicParsing="false" text="Delete List" />
+                           </items>
+                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="Import" />
+                        <MenuItem mnemonicParsing="false" text="Export" />
+                     </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

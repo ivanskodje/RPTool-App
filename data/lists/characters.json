@@ -1,0 +1,50 @@
+{
+  "name": "Characters",
+  "lists": [
+    {
+      "name": "PC",
+      "items": [
+        {
+          "name": "Robert De Niro",
+          "properties": [
+            {
+              "name": "Birth Date",
+              "description": "August 17, 1943     "
+            },
+            {
+              "name": "Bio",
+              "description": "One of the greatest actors of all time.  Just google it if you don\u0027t believe it.   "
+            }
+          ]
+        },
+        {
+          "name": "Sylvester Stallone",
+          "properties": [
+            {
+              "name": "Yo",
+              "description": "Adrian!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NPC",
+      "items": [
+        {
+          "name": "Hu Man",
+          "properties": [
+            {
+              "name": "Health",
+              "description": "5"
+            },
+            {
+              "name": "Weapon",
+              "description": "His generic personality can put anyone to rest"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
