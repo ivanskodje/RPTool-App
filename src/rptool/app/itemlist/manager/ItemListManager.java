@@ -27,9 +27,9 @@ public class ItemListManager
 	public static MainController mainController;
 
 	/**
-	 * Each Category is loaded from separate .json files.
+	 * Each LIst is loaded from separate .json files.
 	 */
-	public static ArrayList<Category> categories = new ArrayList<>();
+	public static ArrayList<List> lists = new ArrayList<>();
 
 	// Setup a Gson 
 	private final static Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -73,12 +73,12 @@ public class ItemListManager
 						String jsonData = new String(encoded, "UTF-8");
 
 						// Store as Category
-						Category category = GSON.fromJson(jsonData, new TypeToken<Category>()
+						List category = GSON.fromJson(jsonData, new TypeToken<List>()
 						{
 						}.getType());
 
 						// Store category in array
-						categories.add(category);
+						lists.add(category);
 					}
 				}
 			}
@@ -94,13 +94,13 @@ public class ItemListManager
 	/**
 	 * Saves given Item List (from the top, Categories)
 	 *
-	 * @param category
+	 * @param list
 	 * @return
 	 */
-	public static boolean save(Category category)
+	public static boolean save(List list)
 	{
 		// Convert Item List Data into a JSON string
-		String jsonData = GSON.toJson(category);
+		String jsonData = GSON.toJson(list);
 
 		try
 		{
@@ -115,7 +115,7 @@ public class ItemListManager
 		try
 		{
 			// Create a clean file name
-			String fileName = category.getName().toLowerCase().replaceAll("[^\\w\\s]", "");
+			String fileName = list.getName().toLowerCase().replaceAll("[^\\w\\s]", "");
 
 			// Write to file, using the category name as the file name
 			PrintWriter writer = new PrintWriter(PATH + fileName + ".json");
@@ -146,7 +146,7 @@ public class ItemListManager
 				+ "et, aliquam vitae dui quos eu, quo mauris erat. Pede mauris bibendum";
 
 		// Create Category 1
-		Category category1 = new Category(categoryName);
+		List category1 = new List(categoryName);
 
 		// Create List 1
 		List list1 = new List("Ground Units");
@@ -199,6 +199,6 @@ public class ItemListManager
 		category1.addList(list2);
 
 		// Add Category1 to Categories List
-		categories.add(category1);
+		lists.add(category1);
 	}
 }

@@ -59,7 +59,7 @@ public class EditController implements Initializable
 		// Get each description
 		for (Property property : item.getProperties())
 		{
-			displayText += property.getName() + ":\n" + property.getDescription() + "\n\n";
+			displayText += property.getName() + ": " + property.getDescription() + "\n";
 		}
 
 		// Set text
@@ -90,7 +90,11 @@ public class EditController implements Initializable
 	@FXML
 	private void onClearPressed(ActionEvent event)
 	{
+		// Clear text
 		textArea.clear();
+
+		// Grab focus again (losing it after clearing)
+		textArea.requestFocus();
 	}
 
 	@FXML
@@ -138,7 +142,7 @@ public class EditController implements Initializable
 					String description = properties.get(properties.size() - 1).getDescription();
 
 					// Append to description string
-					description += pastedString[i] + " ";
+					description += "\n" + pastedString[i];
 
 					// Set new description
 					properties.get(properties.size() - 1).setDescription(description);
@@ -150,7 +154,7 @@ public class EditController implements Initializable
 		item.setProperties(properties);
 
 		// Save changes
-		ItemListManager.save(parentController.getCategory());
+		ItemListManager.save(parentController.getRootList());
 
 		// Refresh ListView
 		parentController.refreshListView();

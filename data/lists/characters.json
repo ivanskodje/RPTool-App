@@ -25,12 +25,30 @@
               "description": "Adrian!"
             }
           ]
+        },
+        {
+          "name": "Test",
+          "properties": [
+            {
+              "name": "Testing",
+              "description": "\nSome Property.\nNext line.\nNext line."
+            }
+          ]
         }
       ]
     },
     {
       "name": "NPC",
       "items": [
+        {
+          "name": "Damn",
+          "properties": [
+            {
+              "name": "What",
+              "description": "Is life? It\u0027s test. Blabla. []!"
+            }
+          ]
+        },
         {
           "name": "Hu Man",
           "properties": [

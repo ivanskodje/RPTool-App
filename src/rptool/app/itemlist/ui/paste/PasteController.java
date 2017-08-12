@@ -69,7 +69,11 @@ public class PasteController implements Initializable
 	@FXML
 	private void onClearPressed(ActionEvent event)
 	{
+		// Clear text
 		textArea.clear();
+
+		// Grab focus again (losing it after clearing)
+		textArea.requestFocus();
 	}
 
 	@FXML
@@ -117,7 +121,7 @@ public class PasteController implements Initializable
 					String description = properties.get(properties.size() - 1).getDescription();
 
 					// Append to description string
-					description += pastedString[i] + " ";
+					description += "\n" + pastedString[i];
 
 					// Set new description
 					properties.get(properties.size() - 1).setDescription(description);
@@ -134,6 +138,9 @@ public class PasteController implements Initializable
 
 		// Clear text
 		textArea.clear();
+
+		// Grab focus again (losing it after clearing)
+		textArea.requestFocus();
 	}
 
 }

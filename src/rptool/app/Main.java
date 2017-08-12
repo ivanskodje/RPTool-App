@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.swing.ImageIcon;
 import rptool.app.helpers.StageHelper;
-import rptool.app.itemlist.classes.Category;
+import rptool.app.itemlist.classes.List;
 import rptool.app.itemlist.manager.ItemListManager;
 
 /**
@@ -31,7 +31,7 @@ public class Main extends Application
 	/* Versioning */
 	int ver_major = 0;	// Major updates that changes the app as an whole
 	int ver_minor = 2;	// Minor changes that may improve upon existing features
-	int ver_mini = 0;	// Mini changes such as bug fixes
+	int ver_mini = 1;	// Mini changes such as bug fixes
 
 	/**
 	 * Launch Preloader before Main
@@ -85,7 +85,7 @@ public class Main extends Application
 		ItemListManager.populateDummyData("Protoss");
 
 		// Get first category
-		Category category = ItemListManager.categories.get(2);
+		List category = ItemListManager.lists.get(2);
 
 		// Save Category
 		ItemListManager.save(category);

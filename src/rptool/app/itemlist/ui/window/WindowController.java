@@ -26,9 +26,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import rptool.app.itemlist.classes.Category;
 import rptool.app.itemlist.classes.Item;
 import rptool.app.itemlist.classes.List;
 import rptool.app.itemlist.manager.ItemListManager;
@@ -58,7 +56,7 @@ public class WindowController implements Initializable
 	private ArrayList<Item> items;
 
 	// The category data for the list and items we are on
-	private Category category;
+	private List rootList;
 
 	// List Property for Filtering Data
 	ListProperty<Item> listProperty = new SimpleListProperty<>();
@@ -69,14 +67,12 @@ public class WindowController implements Initializable
 	@Override
 	public void initialize(URL url, ResourceBundle rb)
 	{
-		// Populate ListView
-		// ....
 	}
 
-	public void setListAndCategory(List list, Category category)
+	public void populateData(List list, List rootList)
 	{
 		this.list = list;
-		this.category = category;
+		this.rootList = rootList;
 		populateListView();
 	}
 
@@ -294,9 +290,9 @@ public class WindowController implements Initializable
 	 *
 	 * @return
 	 */
-	public Category getCategory()
+	public List getRootList()
 	{
-		return category;
+		return rootList;
 	}
 
 	/**
@@ -321,7 +317,7 @@ public class WindowController implements Initializable
 		populateListView();
 
 		// Save changes
-		ItemListManager.save(category);
+		ItemListManager.save(rootList);
 	}
 
 	/**
@@ -338,7 +334,7 @@ public class WindowController implements Initializable
 		populateListView(); // FIXME: For some reason, removing the item from the items array and refreshing does not seem to work.
 
 		// Save
-		ItemListManager.save(category);
+		ItemListManager.save(rootList);
 
 		// Remove the item view for the item we just deleted
 		stackPane.getChildren().clear();

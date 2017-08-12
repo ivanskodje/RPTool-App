@@ -7,13 +7,12 @@ package rptool.app.itemlist;
 
 import com.jfoenix.controls.JFXTabPane;
 import java.io.IOException;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
 
 import javafx.scene.control.Tab;
-import rptool.app.itemlist.classes.Category;
 import rptool.app.itemlist.classes.List;
 import rptool.app.itemlist.manager.ItemListManager;
 import rptool.app.itemlist.ui.window.WindowController;
@@ -71,68 +70,75 @@ public class ItemList
 	 */
 	private void loadNode()
 	{
-		// Create Category Tab Pane for all Categories
-		JFXTabPane categoryTabPane = new JFXTabPane();
-
-		// TODO: Make a good CSS
-		// categoryTabPane.getStylesheets().add("/rptool/app/ui/css/default.css");
-		// -
-		// For each category, create and add a tab
-		for (Category category : ItemListManager.categories)
-		{
-			// Tab
-			Tab categoryTab = new Tab();
-			// categoryTab.setUserData(category);
-			categoryTab.setText(category.getName());
-
-			// Get content from Category
-			categoryTab.setContent(getContentFromCategory(category));
-
-			// Add to Category Tab Pane
-			categoryTabPane.getTabs().add(categoryTab);
-		}
-
-		// Store item list window
-		itemListNode = categoryTabPane;
+		itemListNode = getContentFromList(ItemListManager.lists, null);
 	}
 
+	private int counter = 0;
+
 	/**
-	 * Returns the List Tab Pane generated from Category
+	 * Returns the Item List Window, using an Tab Pane as the root node
 	 *
-	 * @param category
+	 * @param list
 	 * @return
 	 */
-	private Node getContentFromCategory(Category category)
+	private Node getContentFromList(ArrayList<List> lists, List rootList)
 	{
-		// Create List Tab Pane for all Categories
+		// Create ListTabPane for the Tabs
 		JFXTabPane listTabPane = new JFXTabPane();
 
-		// For each list, create and add a tab
-		for (List list : category.getLists())
+		/**
+		 * Check if the list contains sublists. If it does, repeat. If it does
+		 * not have lists, create the items and window.
+		 */
+		for (List list : lists)
 		{
-			// Tab
-			Tab listTab = new Tab();
+			List firstRootList = null;
 
-			// listTab.setUserData(list);
-			listTab.setText(list.getName());
+			// If rootList is null, it means that we are on our root lists
+			if (rootList == null)
+			{
+				// Store the first root list
+				firstRootList = list;
+			}
+			else
+			{
+				firstRootList = rootList;
+			}
 
-			// Open window
-			loadWindow(listTab, list, category);
+			if (!list.getLists().isEmpty())
+			{
+				// Tab for the List
+				Tab listTab = new Tab();
 
-			// Add to Category Tab Pane
-			listTabPane.getTabs().add(listTab);
+				// Tab name for the List
+				listTab.setText(list.getName());
+
+				// Get content from List
+				listTab.setContent(getContentFromList(list.getLists(), firstRootList));
+
+				// Add to Category Tab Pane
+				listTabPane.getTabs().add(listTab);
+			}
+			else
+			{
+				// Tab for the List
+				Tab listTab = new Tab();
+
+				// Tab name for the List
+				listTab.setText(list.getName());
+
+				// Set tab content from the lists
+				listTab.setContent(getContentWindow(list, firstRootList));
+
+				// Set the tab with the lists to list pane
+				listTabPane.getTabs().add(listTab);
+			}
 		}
 
 		return listTabPane;
 	}
 
-	/**
-	 * Loads Window.fxml that contains the ListView and window
-	 *
-	 * @param tab
-	 * @param list
-	 */
-	private void loadWindow(Tab tab, List list, Category category)
+	private Node getContentWindow(List list, List rootList)
 	{
 		// Path to Window.fxml
 		String fxmlFileName = "/rptool/app/itemlist/ui/window/Window.fxml";
@@ -144,7 +150,37 @@ public class ItemList
 			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
 			Node page = fxmlLoader.load(getClass().getResource(fxmlFileName).openStream());
 			WindowController windowController = (WindowController) fxmlLoader.getController();
-			windowController.setListAndCategory(list, category); // Send the list reference to Window Controller
+			windowController.populateData(list, rootList); // Send the list reference to Window Controller
+			return page;
+
+		}
+		catch (IOException ex)
+		{
+			System.err.println("EXCEPTION: ItemList, loadWindow: \n" + ex.getMessage());
+		}
+
+		return null;
+	}
+
+	/**
+	 * Loads Window.fxml that contains the ListView and window
+	 *
+	 * @param tab
+	 * @param list
+	 */
+	private void loadWindow(Tab tab, List list, List category)
+	{
+		// Path to Window.fxml
+		String fxmlFileName = "/rptool/app/itemlist/ui/window/Window.fxml";
+
+		try
+		{
+			// Load Window
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
+			Node page = fxmlLoader.load(getClass().getResource(fxmlFileName).openStream());
+			WindowController windowController = (WindowController) fxmlLoader.getController();
+			// windowController.setListAndCategory(list, category); // Send the list reference to Window Controller
 			tab.setContent(page);
 
 		}

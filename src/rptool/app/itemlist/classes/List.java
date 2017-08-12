@@ -14,18 +14,20 @@ import java.util.ArrayList;
 public class List
 {
 
-	// Name : Title of the List containing the Items
+	// Item Name : Title of the item
 	private String name;
+
+	// Category Lists : Array of Lists belonging to Category
+	private ArrayList<List> lists = new ArrayList<>();
 
 	// Items : Array of Item objects contained in List
 	private ArrayList<Item> items = new ArrayList<>();
 
 	/**
-	 * A List found in an Category. Each Category contains many lists, however
-	 * Lists only have one Category.
+	 * All lists needs a category. A category may have several lists, but lists
+	 * can only belong to one category.
 	 *
 	 * @param name
-	 * @param items
 	 */
 	public List(String name)
 	{
@@ -33,7 +35,7 @@ public class List
 	}
 
 	/**
-	 * Set list name
+	 * Set category name
 	 *
 	 * @param name
 	 */
@@ -43,13 +45,57 @@ public class List
 	}
 
 	/**
-	 * Return list name
+	 * Return category name
 	 *
 	 * @return
 	 */
 	public String getName()
 	{
 		return name;
+	}
+
+	/**
+	 * Set category lists
+	 *
+	 * @param lists
+	 */
+	public void setLists(ArrayList<List> lists)
+	{
+		this.lists = lists;
+	}
+
+	/**
+	 * Return category lists
+	 *
+	 * @return
+	 */
+	public ArrayList<List> getLists()
+	{
+		if (lists == null)
+		{
+			return new ArrayList<>();
+		}
+		return lists;
+	}
+
+	/**
+	 * Add one list to lists
+	 *
+	 * @param list
+	 */
+	public void addList(List list)
+	{
+		lists.add(list);
+	}
+
+	/**
+	 * Removes given list from lists
+	 *
+	 * @param list
+	 */
+	public void removeList(List list)
+	{
+		lists.remove(list);
 	}
 
 	/**
@@ -91,5 +137,4 @@ public class List
 	{
 		items.remove(item);
 	}
-
 }
