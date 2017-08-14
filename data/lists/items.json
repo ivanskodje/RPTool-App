@@ -3,30 +3,49 @@
   "lists": [
     {
       "name": "Weapons",
-      "items": [
+      "lists": [
         {
-          "name": "Knife",
-          "properties": [
+          "name": "Melee",
+          "items": [
             {
-              "name": "Damage",
-              "description": "1d3 "
+              "name": "Knife",
+              "properties": [
+                {
+                  "name": "Damage",
+                  "description": "1d6"
+                }
+              ]
             },
             {
-              "name": "Description",
-              "description": "For stabbing needs "
+              "name": "Sword",
+              "properties": [
+                {
+                  "name": "Damage",
+                  "description": "2d4+ 2"
+                },
+                {
+                  "name": "Description",
+                  "description": "\nShiny sword is shiny"
+                }
+              ]
             }
           ]
         },
         {
-          "name": "Mace",
-          "properties": [
+          "name": "Ranged",
+          "items": [
             {
-              "name": "Damage",
-              "description": "1d4"
-            },
-            {
-              "name": "Note",
-              "description": "No rats"
+              "name": "Crossbow",
+              "properties": [
+                {
+                  "name": "Damage",
+                  "description": "2d4"
+                },
+                {
+                  "name": "Range",
+                  "description": "30 ft"
+                }
+              ]
             }
           ]
         }

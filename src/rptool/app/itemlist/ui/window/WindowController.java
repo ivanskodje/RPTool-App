@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -67,6 +69,20 @@ public class WindowController implements Initializable
 	@Override
 	public void initialize(URL url, ResourceBundle rb)
 	{
+		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Item>()
+		{
+
+			@Override
+			public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue)
+			{
+				// Make sure the new value is not null before setting
+				if (newValue != null)
+				{
+					// Open View Window for the selected item
+					openViewWindow(newValue);
+				}
+			}
+		});
 	}
 
 	public void populateData(List list, List rootList)
@@ -173,14 +189,7 @@ public class WindowController implements Initializable
 	@FXML
 	private void onListViewMousePressed(MouseEvent event)
 	{
-		// Get selected Artifact
-		Item selectedItem = listView.getSelectionModel().getSelectedItem();
 
-		// If we have a valid Item, open View window
-		if (selectedItem != null)
-		{
-			openViewWindow(selectedItem);
-		}
 	}
 
 	/**

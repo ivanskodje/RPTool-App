@@ -18,7 +18,10 @@
                <center>
                   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
                      <content>
-                        <StackPane fx:id="stackPane" />
+                        <StackPane fx:id="stackPane">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding></StackPane>
                      </content>
                   </ScrollPane>
                </center>
