@@ -13,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javax.swing.ImageIcon;
 import rptool.app.helpers.StageHelper;
 import rptool.app.itemlist.classes.List;
 import rptool.app.itemlist.manager.ItemListManager;
@@ -26,12 +25,12 @@ public class Main extends Application
 {
 
 	/* App */
-	String app_name = "RPTool";
+	private String app_name = "RPTool";
 
 	/* Versioning */
-	int ver_major = 0;	// Major updates that changes the app as an whole
-	int ver_minor = 2;	// Minor changes that may improve upon existing features
-	int ver_mini = 1;	// Mini changes such as bug fixes
+	private int ver_major = 0;	// Major updates that changes the app as an whole
+	private int ver_minor = 2;	// Minor changes that may improve upon existing features
+	private int ver_mini = 1;	// Mini changes such as bug fixes
 
 	/**
 	 * Launch Preloader before Main
@@ -52,8 +51,6 @@ public class Main extends Application
 
 		// Load all Item List Data
 		ItemListManager.load();
-
-		// debug_save();
 	}
 
 	/**

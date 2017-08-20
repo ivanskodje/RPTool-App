@@ -32,7 +32,7 @@ public class MainController implements Initializable
 	{
 		// ItemListManager.mainController = this;
 		// By default show Item List
-		stackPane.getChildren().add(ItemList.getInstance().getNode());
+		onItemListPressed(null);
 	}
 
 	/**
@@ -57,5 +57,4 @@ public class MainController implements Initializable
 	{
 		stackPane.getChildren().clear();
 	}
-
 }

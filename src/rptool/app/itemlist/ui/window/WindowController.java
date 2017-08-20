@@ -57,9 +57,6 @@ public class WindowController implements Initializable
 	// Items belonging to the list
 	private ArrayList<Item> items;
 
-	// The category data for the list and items we are on
-	private List rootList;
-
 	// List Property for Filtering Data
 	ListProperty<Item> listProperty = new SimpleListProperty<>();
 
@@ -85,10 +82,9 @@ public class WindowController implements Initializable
 		});
 	}
 
-	public void populateData(List list, List rootList)
+	public void populateData(List list)
 	{
 		this.list = list;
-		this.rootList = rootList;
 		populateListView();
 	}
 
@@ -249,7 +245,7 @@ public class WindowController implements Initializable
 
 			// Send Item to controller
 			EditController controller = (EditController) fxmlLoader.getController();
-			controller.setItem(item);
+			controller.setSelectedItem(item);
 			controller.setParentController(this);
 
 			// Set page to StackPane
@@ -295,16 +291,6 @@ public class WindowController implements Initializable
 	}
 
 	/**
-	 * Returns the category we are on. Used for saving json.
-	 *
-	 * @return
-	 */
-	public List getRootList()
-	{
-		return rootList;
-	}
-
-	/**
 	 * Refreshes list view. Should be run after making changes to items.
 	 */
 	public void refreshListView()
@@ -326,7 +312,7 @@ public class WindowController implements Initializable
 		populateListView();
 
 		// Save changes
-		ItemListManager.save(rootList);
+		ItemListManager.save(list.getRootList());
 	}
 
 	/**
@@ -343,7 +329,7 @@ public class WindowController implements Initializable
 		populateListView(); // FIXME: For some reason, removing the item from the items array and refreshing does not seem to work.
 
 		// Save
-		ItemListManager.save(rootList);
+		ItemListManager.save(list.getRootList());
 
 		// Remove the item view for the item we just deleted
 		stackPane.getChildren().clear();

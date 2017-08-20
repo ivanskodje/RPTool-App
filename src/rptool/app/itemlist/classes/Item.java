@@ -22,6 +22,9 @@ public class Item implements Comparable<Item>
 	// Item Properties : Array of Property objects
 	private ArrayList<Property> properties = new ArrayList<>();
 
+	// The parent list of this item that it belongs to
+	private transient List parentList;
+
 	/**
 	 * Item found in Lists. Each List may contain many Items, however items can
 	 * only belong to one List.
@@ -117,5 +120,25 @@ public class Item implements Comparable<Item>
 	{
 		// A-Z Sorting
 		return this.name.compareTo(o.getName());
+	}
+
+	/**
+	 * Sets the parent list of this item
+	 *
+	 * @param parentList
+	 */
+	public void setParentList(List parentList)
+	{
+		this.parentList = parentList;
+	}
+
+	/**
+	 * Returns the parent list of this item
+	 *
+	 * @return
+	 */
+	public List getParentList()
+	{
+		return parentList;
 	}
 }

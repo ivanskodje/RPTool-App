@@ -33,8 +33,8 @@ public class EditController implements Initializable
 	@FXML
 	private TextArea textArea;
 
-	// Selected item
-	private Item item;
+	// CURRENT Selected item
+	private Item selectedItem;
 
 	// Window Controller parent
 	private WindowController parentController;
@@ -48,16 +48,16 @@ public class EditController implements Initializable
 		// TODO
 	}
 
-	public void setItem(Item item)
+	public void setSelectedItem(Item selectedItem)
 	{
 		// Store item
-		this.item = item;
+		this.selectedItem = selectedItem;
 
 		// Build string
-		String displayText = item.getName() + "\n";
+		String displayText = selectedItem.getName() + "\n";
 
 		// Get each description
-		for (Property property : item.getProperties())
+		for (Property property : selectedItem.getProperties())
 		{
 			displayText += property.getName() + ": " + property.getDescription() + "\n";
 		}
@@ -104,7 +104,7 @@ public class EditController implements Initializable
 		if (savePastedText(textArea.getText()))
 		{
 			// View item that you edited
-			parentController.openViewWindow(item);
+			parentController.openViewWindow(selectedItem);
 		}
 	}
 
@@ -117,7 +117,7 @@ public class EditController implements Initializable
 		ArrayList<Property> properties = new ArrayList<>();
 
 		// Save new name to Item
-		item.setName(pastedString[0]);
+		selectedItem.setName(pastedString[0]);
 
 		// Iterate each line (except the first)
 		for (int i = 1; i < pastedString.length; i++)
@@ -151,10 +151,10 @@ public class EditController implements Initializable
 		}
 
 		// Save new properties to Item
-		item.setProperties(properties);
+		selectedItem.setProperties(properties);
 
 		// Save changes
-		ItemListManager.save(parentController.getRootList());
+		ItemListManager.save(selectedItem.getParentList().getRootList());
 
 		// Refresh ListView
 		parentController.refreshListView();

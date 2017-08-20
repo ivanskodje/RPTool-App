@@ -6,6 +6,7 @@
       "lists": [
         {
           "name": "Melee",
+          "lists": [],
           "items": [
             {
               "name": "Knife",
@@ -33,6 +34,7 @@
         },
         {
           "name": "Ranged",
+          "lists": [],
           "items": [
             {
               "name": "Crossbow",
@@ -46,6 +48,15 @@
                   "description": "30 ft"
                 }
               ]
+            },
+            {
+              "name": "Dart",
+              "properties": [
+                {
+                  "name": "Damage",
+                  "description": "1d3"
+                }
+              ]
             }
           ]
         }
@@ -53,6 +64,7 @@
     },
     {
       "name": "Armor",
+      "lists": [],
       "items": [
         {
           "name": "Leather Armor",
@@ -68,6 +80,16 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Items Heck",
+      "lists": [
+        {
+          "name": "HECK II",
+          "items": []
+        }
+      ],
+      "items": []
     }
   ]
 }

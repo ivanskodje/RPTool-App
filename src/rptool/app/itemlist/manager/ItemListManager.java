@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -72,13 +73,18 @@ public class ItemListManager
 						byte[] encoded = Files.readAllBytes(Paths.get(PATH + fileName));
 						String jsonData = new String(encoded, "UTF-8");
 
-						// Store as Category
-						List category = GSON.fromJson(jsonData, new TypeToken<List>()
+						Type typeList = new TypeToken<List>()
 						{
-						}.getType());
+						}.getType();
 
-						// Store category in array
-						lists.add(category);
+						// Store as List (Using TypeToken)
+						List list = GSON.fromJson(jsonData, typeList);
+
+						// Refresh list data
+						list.refreshData();
+
+						// Store list in array
+						lists.add(list);
 					}
 				}
 			}

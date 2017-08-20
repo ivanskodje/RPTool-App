@@ -3,6 +3,7 @@
   "lists": [
     {
       "name": "PC",
+      "lists": [],
       "items": [
         {
           "name": "Robert De Niro",
@@ -39,6 +40,12 @@
     },
     {
       "name": "NPC",
+      "lists": [
+        {
+          "name": "111",
+          "items": []
+        }
+      ],
       "items": [
         {
           "name": "Damn",
